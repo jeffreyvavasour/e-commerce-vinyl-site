@@ -2,13 +2,13 @@ const cartArr = [];
 
 const productsArr = [
   {
-    company: "Nike",
-    name: "Fall Limited Edition Sneakers",
+    company: "Soma Quality Recordings",
+    name: "Various – Soma 25 - Disc 1",
     description:
-      "These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they'll withstand everything the weather can offer",
+      "Record surfaces may show some signs of wear and may have slight scuffs or very light scratches that don't affect one's listening experiences. Slight warps that do not affect the sound are \"OK\". The label may have some ring wear or discoloration, but it should be barely noticeable. Spindle marks may be present.",
     price: "$125.00",
-    discount: "%50",
-    "original price": "$250.00",
+    discount: "Near Mint",
+    "original price": "14 Apr 2017",
     "images big": [
       "./dist/assets/image-product-1-1.jpg",
       "./dist/assets/image-product-1-2.jpg",
@@ -23,13 +23,13 @@ const productsArr = [
     ],
   },
   {
-    company: "Adidas",
-    name: "Spring Limited Edition Sneakers",
+    company: "Soma Quality Recordings",
+    name: "Various – Soma 25 - Disc 2",
     description:
-      "These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they'll withstand everything the weather can offer",
+      "Record surfaces may show some signs of wear and may have slight scuffs or very light scratches that don't affect one's listening experiences. Slight warps that do not affect the sound are \"OK\". The label may have some ring wear or discoloration, but it should be barely noticeable. Spindle marks may be present.",
     price: "$175.00",
-    discount: "%50",
-    "original price": "$350.00",
+    discount: "Near Mint",
+    "original price": "14 Apr 2017",
     "images big": [
       "./dist/assets/image-product-2-1.jpg",
       "./dist/assets/image-product-2-2.jpg",
@@ -44,13 +44,13 @@ const productsArr = [
     ],
   },
   {
-    company: "Adidas",
-    name: "Spring Limited Edition Sneakers",
+    company: "Soma Quality Recordings",
+    name: "Various – Soma 25 - Disc 3",
     description:
-      "These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they'll withstand everything the weather can offer",
+      "The record should show no obvious signs of wear. A 45 RPM or EP sleeve should have no more than the most minor defects, such as any sign of slight handling. An LP cover should have no creases, folds, seam splits, cut-out holes, or other noticeable similar defects. The same should be true of any other inserts, such as posters, lyric sleeves, etc.",
     price: "$175.00",
-    discount: "%50",
-    "original price": "$350.00",
+    discount: "Near Mint",
+    "original price": "14 Apr 2017",
     "images big": [
       "./dist/assets/image-product-3-1.jpg",
       "./dist/assets/image-product-3-2.jpg",
