@@ -10,16 +10,16 @@ const productsArr = [
     discount: "%50",
     "original price": "$250.00",
     "images big": [
-      "./dist/assets/image-product-1.jpg",
-      "./dist/assets/image-product-2.jpg",
-      "./dist/assets/image-product-3.jpg",
-      "./dist/assets/image-product-4.jpg",
+      "./dist/assets/image-product-1-1.jpg",
+      "./dist/assets/image-product-1-2.jpg",
+      "./dist/assets/image-product-1-3.jpg",
+      "./dist/assets/image-product-1-4.jpg",
     ],
     "images small": [
-      "./dist/assets/image-product-1-thumbnail.jpg",
-      "./dist/assets/image-product-2-thumbnail.jpg",
-      "./dist/assets/image-product-3-thumbnail.jpg",
-      "./dist/assets/image-product-4-thumbnail.jpg",
+      "./dist/assets/image-product-1-1-thumbnail.jpg",
+      "./dist/assets/image-product-1-2-thumbnail.jpg",
+      "./dist/assets/image-product-1-3-thumbnail.jpg",
+      "./dist/assets/image-product-1-4-thumbnail.jpg",
     ],
   },
   {
@@ -31,16 +31,16 @@ const productsArr = [
     discount: "%50",
     "original price": "$350.00",
     "images big": [
-      "./dist/assets/image-product-1.jpg",
-      "./dist/assets/image-product-2.jpg",
-      "./dist/assets/image-product-3.jpg",
-      "./dist/assets/image-product-4.jpg",
+      "./dist/assets/image-product-2-1.jpg",
+      "./dist/assets/image-product-2-2.jpg",
+      "./dist/assets/image-product-2-3.jpg",
+      "./dist/assets/image-product-2-4.jpg",
     ],
     "images small": [
-      "./dist/assets/image-product-1-thumbnail.jpg",
-      "./dist/assets/image-product-2-thumbnail.jpg",
-      "./dist/assets/image-product-3-thumbnail.jpg",
-      "./dist/assets/image-product-4-thumbnail.jpg",
+      "./dist/assets/image-product-2-1-thumbnail.jpg",
+      "./dist/assets/image-product-2-2-thumbnail.jpg",
+      "./dist/assets/image-product-2-3-thumbnail.jpg",
+      "./dist/assets/image-product-2-4-thumbnail.jpg",
     ],
   },
   {
@@ -52,16 +52,16 @@ const productsArr = [
     discount: "%50",
     "original price": "$350.00",
     "images big": [
-      "./dist/assets/image-product-1.jpg",
-      "./dist/assets/image-product-2.jpg",
-      "./dist/assets/image-product-3.jpg",
-      "./dist/assets/image-product-4.jpg",
+      "./dist/assets/image-product-3-1.jpg",
+      "./dist/assets/image-product-3-2.jpg",
+      "./dist/assets/image-product-3-3.jpg",
+      "./dist/assets/image-product-3-4.jpg",
     ],
     "images small": [
-      "./dist/assets/image-product-1-thumbnail.jpg",
-      "./dist/assets/image-product-2-thumbnail.jpg",
-      "./dist/assets/image-product-3-thumbnail.jpg",
-      "./dist/assets/image-product-4-thumbnail.jpg",
+      "./dist/assets/image-product-3-1-thumbnail.jpg",
+      "./dist/assets/image-product-3-2-thumbnail.jpg",
+      "./dist/assets/image-product-3-3-thumbnail.jpg",
+      "./dist/assets/image-product-3-4-thumbnail.jpg",
     ],
   },
 ];
@@ -329,6 +329,7 @@ bigImgs.forEach((img) => {
     carouselToChange = modal.querySelector(".carousel");
     // get big img src
     const bigImgSrc = e.currentTarget.src.slice(0, -4);
+    console.log(bigImgSrc);
     // get small imgs src's array
     const smallImgs = e.currentTarget
       .closest(".product__pics")
