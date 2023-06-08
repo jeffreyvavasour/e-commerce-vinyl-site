@@ -43,6 +43,27 @@ const productsArr = [
       "./dist/assets/image-product-4-thumbnail.jpg",
     ],
   },
+  {
+    company: "Adidas",
+    name: "Spring Limited Edition Sneakers",
+    description:
+      "These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they'll withstand everything the weather can offer",
+    price: "$175.00",
+    discount: "%50",
+    "original price": "$350.00",
+    "images big": [
+      "./dist/assets/image-product-1.jpg",
+      "./dist/assets/image-product-2.jpg",
+      "./dist/assets/image-product-3.jpg",
+      "./dist/assets/image-product-4.jpg",
+    ],
+    "images small": [
+      "./dist/assets/image-product-1-thumbnail.jpg",
+      "./dist/assets/image-product-2-thumbnail.jpg",
+      "./dist/assets/image-product-3-thumbnail.jpg",
+      "./dist/assets/image-product-4-thumbnail.jpg",
+    ],
+  },
 ];
 
 function createProductHTML(obj) {
