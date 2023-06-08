@@ -204,38 +204,14 @@ function toggleNav() {
 let carouselToChange;
 let count;
 let smallImgSrcs = [];
+let bigImgSrcs = [];
 
-const btnsSliderLeft = document.querySelectorAll(
-  ".carousel__slider-btns__left"
-);
-const btnsSliderRight = document.querySelectorAll(
-  ".carousel__slider-btns__right"
-);
 const carousels = document.querySelectorAll(".carousel");
-
 // position slides in each carousel
 carousels.forEach((car) => {
   const carouselSlides = car.querySelectorAll(".carousel__slide");
   carouselSlides.forEach((slide, index) => {
     slide.style.left = `${index}00%`;
-  });
-});
-
-// slider btns event listeners
-btnsSliderLeft.forEach((btn) => {
-  btn.addEventListener("click", function (e) {
-    carouselToChange = e.currentTarget.closest(".carousel");
-    carouselToChange.dataset.count = Number(carouselToChange.dataset.count) - 1;
-    count = carouselToChange.dataset.count;
-    carousel();
-  });
-});
-btnsSliderRight.forEach((btn) => {
-  btn.addEventListener("click", function (e) {
-    carouselToChange = e.currentTarget.closest(".carousel");
-    carouselToChange.dataset.count = Number(carouselToChange.dataset.count) + 1;
-    count = carouselToChange.dataset.count;
-    carousel();
   });
 });
 
@@ -302,6 +278,7 @@ x.addEventListener("change", myFunction);
 const smallImgs = document.querySelectorAll(".product__pics__small__div__img");
 smallImgs.forEach((img) => {
   img.addEventListener("click", function (e) {
+    console.log(e.currentTarget.src);
     if (img.closest(".modal")) {
       smallImgSrcs.forEach((src, i) => {
         if (e.currentTarget.src == src) {
@@ -325,6 +302,139 @@ const modal = document.querySelector(".modal");
 const bigImgs = document.querySelectorAll(".product__pics__big__img");
 bigImgs.forEach((img) => {
   img.addEventListener("click", function (e) {
+    // insert html based off img clicked
+    let ind;
+    productsArr.forEach((obj, i) => {
+      obj["images big"].forEach((src) => {
+        if (e.currentTarget.src.includes(src.slice(1))) {
+          ind = i + 1;
+        }
+      });
+    });
+
+    modal.innerHTML = `<div class="carousel-modal">
+    <button class="modal-close"><i class="fa fa-close"></i></button>
+    <div class="carousel" data-count="0">
+      <div class="carousel__slider-btns">
+        <button class="carousel__slider-btn carousel__slider-btns__left">
+          <i class="fa fa-arrow-left"></i>
+        </button>
+        <button class="carousel__slider-btn carousel__slider-btns__right">
+          <i class="fa fa-arrow-right"></i>
+        </button>
+      </div>
+      <div class="carousel__slide">
+        <img src="./dist/assets/image-product-${ind}-1.jpg" alt="shoe photo" />
+      </div>
+      <div class="carousel__slide">
+        <img src="./dist/assets/image-product-${ind}-2.jpg" alt="shoe photo" />
+      </div>
+      <div class="carousel__slide">
+        <img src="./dist/assets/image-product-${ind}-3.jpg" alt="shoe photo" />
+      </div>
+      <div class="carousel__slide">
+        <img src="./dist/assets/image-product-${ind}-4.jpg" alt="shoe photo" />
+      </div>
+    </div>
+    <div class="product__pics__small">
+      <div class="product__pics__small__div">
+        <img
+          src=""
+          alt="shoe photo"
+          class="product__pics__small__div__img"
+        />
+      </div>
+      <div class="product__pics__small__div">
+        <img
+          src=""
+          -1
+          alt="shoe photo"
+          class="product__pics__small__div__img"
+        />
+      </div>
+      <div class="product__pics__small__div">
+        <img
+          src=""
+          alt="shoe photo"
+          class="product__pics__small__div__img"
+        />
+      </div>
+      <div class="product__pics__small__div">
+        <img
+          src=""
+          alt="shoe photo"
+          class="product__pics__small__div__img"
+        />
+      </div>
+    </div>
+  </div>`;
+
+    // small imgs functionality
+    const smallImgss = document.querySelectorAll(
+      ".product__pics__small__div__img"
+    );
+    smallImgss.forEach((img) => {
+      img.addEventListener("click", function (e) {
+        console.log(e.currentTarget.src);
+        if (img.closest(".modal")) {
+          smallImgSrcs.forEach((src, i) => {
+            if (e.currentTarget.src == src) {
+              carouselToChange.dataset.count = i;
+              count = carouselToChange.dataset.count;
+              carousel();
+            }
+          });
+        } else {
+          const bigImgSrc = e.currentTarget.src.slice(0, -14);
+          const bigImg = e.currentTarget
+            .closest(".product__pics")
+            .querySelector(".product__pics__big__img");
+          bigImg.src = `${bigImgSrc}.jpg`;
+        }
+      });
+    });
+
+    // selectors
+    const btnsSliderLeft = document.querySelectorAll(
+      ".carousel__slider-btns__left"
+    );
+    const btnsSliderRight = document.querySelectorAll(
+      ".carousel__slider-btns__right"
+    );
+    const carousels = document.querySelectorAll(".carousel");
+
+    // position slides in each carousel
+    carousels.forEach((car) => {
+      const carouselSlides = car.querySelectorAll(".carousel__slide");
+      carouselSlides.forEach((slide, index) => {
+        slide.style.left = `${index}00%`;
+      });
+    });
+
+    // slider btns event listeners
+    btnsSliderLeft.forEach((btn) => {
+      btn.addEventListener("click", function (e) {
+        carouselToChange = e.currentTarget.closest(".carousel");
+        carouselToChange.dataset.count =
+          Number(carouselToChange.dataset.count) - 1;
+        count = carouselToChange.dataset.count;
+        carousel();
+      });
+    });
+    btnsSliderRight.forEach((btn) => {
+      btn.addEventListener("click", function (e) {
+        carouselToChange = e.currentTarget.closest(".carousel");
+        carouselToChange.dataset.count =
+          Number(carouselToChange.dataset.count) + 1;
+        count = carouselToChange.dataset.count;
+        carousel();
+      });
+    });
+
+    // modal close btn
+    const modalClose = document.querySelector(".modal-close");
+    modalClose.addEventListener("click", closeModal);
+
     modal.classList.remove("hidden");
     carouselToChange = modal.querySelector(".carousel");
     // get big img src
@@ -356,10 +466,6 @@ bigImgs.forEach((img) => {
       });
   });
 });
-
-// modal close btn
-const modalClose = document.querySelector(".modal-close");
-modalClose.addEventListener("click", closeModal);
 
 // CART
 const cartDiv = document.querySelector(".cart");
@@ -517,4 +623,5 @@ function cartAmount() {
 function closeModal() {
   modal.classList.add("hidden");
   smallImgSrcs = [];
+  modal.innerHTML = "";
 }
