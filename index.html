@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Telly jelly e-commerce product site</title>
+    <!-- font awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <!-- font awesome -->
+    <script
+      src="https://kit.fontawesome.com/3cfde07445.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="./dist/css/main.css" />
+    <script src="./dist/js/main.js" defer></script>
+  </head>
+  <body>
+    <div class="modal hidden">
+      <div class="carousel-modal">
+        <button class="modal-close"><i class="fa fa-close"></i></button>
+        <div class="carousel" data-count="0">
+          <div class="carousel__slider-btns">
+            <button class="carousel__slider-btn carousel__slider-btns__left">
+              <i class="fa fa-arrow-left"></i>
+            </button>
+            <button class="carousel__slider-btn carousel__slider-btns__right">
+              <i class="fa fa-arrow-right"></i>
+            </button>
+          </div>
+          <div class="carousel__slide">
+            <img src="./dist/assets/image-product-1.jpg" alt="shoe photo" />
+          </div>
+          <div class="carousel__slide">
+            <img src="./dist/assets/image-product-2.jpg" alt="shoe photo" />
+          </div>
+          <div class="carousel__slide">
+            <img src="./dist/assets/image-product-3.jpg" alt="shoe photo" />
+          </div>
+          <div class="carousel__slide">
+            <img src="./dist/assets/image-product-4.jpg" alt="shoe photo" />
+          </div>
+        </div>
+        <div class="product__pics__small">
+          <div class="product__pics__small__div">
+            <img
+              src=""
+              alt="shoe photo"
+              class="product__pics__small__div__img"
+            />
+          </div>
+          <div class="product__pics__small__div">
+            <img
+              src="./dist/assets/image-product-2-thumbnail.jpg"
+              alt="shoe photo"
+              class="product__pics__small__div__img"
+            />
+          </div>
+          <div class="product__pics__small__div">
+            <img
+              src="./dist/assets/image-product-3-thumbnail.jpg"
+              alt="shoe photo"
+              class="product__pics__small__div__img"
+            />
+          </div>
+          <div class="product__pics__small__div">
+            <img
+              src="./dist/assets/image-product-4-thumbnail.jpg"
+              alt="shoe photo"
+              class="product__pics__small__div__img"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <header class="header container flex">
+      <div class="cart hidden">
+        <h3>Cart</h3>
+        <hr />
+        <div class="cart__empty">
+          <p>Your cart is empty.</p>
+        </div>
+        <!-- <div class="cart__product flex">
+          <img
+            src="./dist/assets/image-product-1-thumbnail.jpg"
+            alt="shoe photo"
+          />
+          <div class="cart__product__details flex">
+            <p class="cart__product__details__name">Fall Winter Sneakers</p>
+            <div class="cart__product__details__price">
+              <p class="cart__product__details__price__price">
+                $125.00 x 3 <span>$375.10</span>
+              </p>
+            </div>
+          </div>
+          <div class="cart__product__delete-btn">
+            <i class="fas fa-trash"></i>
+          </div>
+        </div>
+        <div class="cart__product flex">
+          <img
+            src="./dist/assets/image-product-1-thumbnail.jpg"
+            alt="shoe photo"
+          />
+          <div class="cart__product__details flex">
+            <p class="cart__product__details__name">
+              Fall Limited Edition Sneakers
+            </p>
+            <div class="cart__product__details__price">
+              <p class="cart__product__details__price__price">
+                $125.00 x 3 <span>$375.10</span>
+              </p>
+            </div>
+          </div>
+          <div class="cart__product__delete-btn">
+            <i class="fas fa-trash"></i>
+          </div>
+        </div>
+        <button class="checkout">checkout</button> -->
+      </div>
+      <button class="mobile-nav-toggle" id="mobile-nav-toggle">
+        <div class="bar bar-1" id="bar-1"></div>
+        <div class="bar bar-2" id="bar-2"></div>
+        <div class="bar bar-3" id="bar-3"></div>
+      </button>
+      <div class="logo">
+        <a href="">
+          <img src="./dist/assets/logo.svg" alt="logo" />
+        </a>
+      </div>
+      <div class="nav">
+        <ul class="nav-list flex">
+          <li class="nav-list__item"><a href="">Collections</a></li>
+          <li class="nav-list__item"><a href="">Men</a></li>
+          <li class="nav-list__item"><a href="">Women</a></li>
+          <li class="nav-list__item"><a href="">About</a></li>
+          <li class="nav-list__item"><a href="">Contact</a></li>
+        </ul>
+      </div>
+      <div class="cart-btn-div">
+        <a href="">
+          <img src="./dist/assets/icon-cart.svg" alt="cart-icon" />
+        </a>
+        <div class="cart-amount hidden">3</div>
+      </div>
+      <div class="profile">
+        <a href="">
+          <img src="./dist/assets/image-avatar.png" alt="avatar-image" />
+        </a>
+      </div>
+    </header>
+    <main class="products">
+      <!-- <div class="product">
+        <div class="carousel" data-count="0">
+          <div class="carousel__slider-btns">
+            <button class="carousel__slider-btn carousel__slider-btns__left">
+              <i class="fa fa-arrow-left"></i>
+            </button>
+            <button class="carousel__slider-btn carousel__slider-btns__right">
+              <i class="fa fa-arrow-right"></i>
+            </button>
+          </div>
+          <div class="carousel__slide">
+            <img src="./dist/assets/image-product-1.jpg" alt="shoe photo" />
+          </div>
+          <div class="carousel__slide">
+            <img src="./dist/assets/image-product-2.jpg" alt="shoe photo" />
+          </div>
+          <div class="carousel__slide">
+            <img src="./dist/assets/image-product-3.jpg" alt="shoe photo" />
+          </div>
+          <div class="carousel__slide">
+            <img src="./dist/assets/image-product-4.jpg" alt="shoe photo" />
+          </div>
+        </div>
+        <div class="product__pics">
+          <div class="product__pics__big">
+            <img
+              class="product__pics__big__img"
+              src="./dist/assets/image-product-1.jpg"
+              alt="shoe photo"
+            />
+          </div>
+          <div class="product__pics__small">
+            <div class="product__pics__small__div">
+              <img
+                src="./dist/assets/image-product-1-thumbnail.jpg"
+                alt="shoe photo"
+                class="product__pics__small__div__img"
+              />
+            </div>
+            <div class="product__pics__small__div">
+              <img
+                src="./dist/assets/image-product-2-thumbnail.jpg"
+                alt="shoe photo"
+                class="product__pics__small__div__img"
+              />
+            </div>
+            <div class="product__pics__small__div">
+              <img
+                src="./dist/assets/image-product-3-thumbnail.jpg"
+                alt="shoe photo"
+                class="product__pics__small__div__img"
+              />
+            </div>
+            <div class="product__pics__small__div">
+              <img
+                src="./dist/assets/image-product-4-thumbnail.jpg"
+                alt="shoe photo"
+                class="product__pics__small__div__img"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="product__info">
+          <h3 class="product__info__company">Nike</h3>
+          <h2 class="product__info__name">Fall Limited Edition Sneakers</h2>
+          <p class="product__info__desc">
+            These low-profile sneakers are your perfect casual wear companion.
+            Featuring a durable rubber outer sole, they'll withstand everything
+            the weather can offer
+          </p>
+          <div class="product__info__price">
+            <div class="product__info__price__after">
+              <p class="product__info__price__after__price">$125</p>
+              <p class="product__info__price__after__discount">%50</p>
+            </div>
+            <div class="product__info__price__before">
+              <p class="product__info__price__before__price">$250</p>
+            </div>
+          </div>
+          <div class="product__info__form">
+            <div class="product__info__form__counter">
+              <button
+                class="product__info__form__counter__btn product__info__form__counter__btn__minus"
+              >
+                <i class="fa fa-minus" aria-hidden="true"></i>
+              </button>
+              <input
+                type="text"
+                name="quantity"
+                id="quantity"
+                value="0"
+                class="product__info__form__counter__input"
+              />
+              <button
+                class="product__info__form__counter__btn product__info__form__counter__btn__plus"
+              >
+                <i class="fa fa-plus" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+          <div class="product__info__add-to-cart">
+            <button class="product__info__add-to-cart__btn flex">
+              <img src="./dist/assets/icon-cart.svg" alt="cart-icon" />Add to
+              cart
+            </button>
+          </div>
+        </div>
+      </div> -->
+    </main>
+  </body>
+</html>

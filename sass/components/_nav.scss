@@ -1,0 +1,41 @@
+@import "../abstract/mixins";
+
+.nav {
+  z-index: 9998;
+  @include transition-ease;
+
+  &-list {
+    --gap: 2rem;
+
+    @include media-max($mq-medium) {
+      flex-direction: column;
+      margin-top: 50%;
+      margin-left: 20%;
+    }
+    @include media-max($mq-small) {
+      margin-top: 65%;
+    }
+
+    &-item {
+      align-self: flex-start;
+    }
+  }
+
+  @include media-max($mq-medium) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 60vw;
+    background-color: pink;
+    transform: translateX(-100%);
+  }
+
+  &.change {
+    transform: translateX(0);
+  }
+}
+
+// transform nav
+// hide it
+// show menu btn

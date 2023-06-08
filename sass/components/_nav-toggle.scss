@@ -1,0 +1,30 @@
+@import "../abstract/colors";
+
+.mobile-nav-toggle {
+  background-color: transparent;
+  position: absolute;
+  z-index: 9999;
+  display: none;
+
+  .bar {
+    width: 35px;
+    height: 5px;
+    margin: 6px 0;
+    transition: 0.4s;
+    background-color: $primary-color;
+  }
+
+  .bar-1.change {
+    transform: translate(0, 11px) rotate(-45deg);
+  }
+  .bar-2.change {
+    opacity: 0;
+  }
+  .bar-3.change {
+    transform: translate(0, -11px) rotate(45deg);
+  }
+
+  @include media-max($mq-medium) {
+    display: block;
+  }
+}

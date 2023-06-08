@@ -1,0 +1,18 @@
+@import "base/resets";
+@import "sections/header";
+@import "sections/product";
+@import "utilities/flex";
+@import "utilities/container";
+@import "components/nav";
+@import "components/nav-toggle";
+@import "components/carousel";
+@import "components/carousel-modal";
+@import "components/modal";
+@import "components/cart";
+@import "components/buttons";
+@import "components/cart-amount";
+@import "utilities/hidden";
+
+body {
+  background-color: blue;
+}

@@ -1,0 +1,34 @@
+@import "../abstract/mixins";
+
+.carousel {
+  position: relative;
+  height: 60vh;
+  overflow: hidden;
+
+  &__slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    transition: 0.5s linear all;
+    transform: translateX(0%);
+
+    & img {
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__slider-btns {
+    position: absolute;
+    top: 50%;
+    z-index: 10;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  @include media-min($mq-medium) {
+    display: none;
+  }
+}

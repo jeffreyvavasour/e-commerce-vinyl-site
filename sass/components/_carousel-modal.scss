@@ -1,0 +1,14 @@
+.carousel-modal {
+  @include media-min($mq-medium) {
+    display: grid;
+  }
+
+  place-items: center;
+
+  .carousel {
+    @include media-min($mq-medium) {
+      display: initial;
+      width: 100%;
+    }
+  }
+}

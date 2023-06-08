@@ -1,0 +1,498 @@
+const cartArr = [];
+
+const productsArr = [
+  {
+    company: "Nike",
+    name: "Fall Limited Edition Sneakers",
+    description:
+      "These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they'll withstand everything the weather can offer",
+    price: "$125.00",
+    discount: "%50",
+    "original price": "$250.00",
+    "images big": [
+      "./dist/assets/image-product-1.jpg",
+      "./dist/assets/image-product-2.jpg",
+      "./dist/assets/image-product-3.jpg",
+      "./dist/assets/image-product-4.jpg",
+    ],
+    "images small": [
+      "./dist/assets/image-product-1-thumbnail.jpg",
+      "./dist/assets/image-product-2-thumbnail.jpg",
+      "./dist/assets/image-product-3-thumbnail.jpg",
+      "./dist/assets/image-product-4-thumbnail.jpg",
+    ],
+  },
+  {
+    company: "Adidas",
+    name: "Spring Limited Edition Sneakers",
+    description:
+      "These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they'll withstand everything the weather can offer",
+    price: "$175.00",
+    discount: "%50",
+    "original price": "$350.00",
+    "images big": [
+      "./dist/assets/image-product-1.jpg",
+      "./dist/assets/image-product-2.jpg",
+      "./dist/assets/image-product-3.jpg",
+      "./dist/assets/image-product-4.jpg",
+    ],
+    "images small": [
+      "./dist/assets/image-product-1-thumbnail.jpg",
+      "./dist/assets/image-product-2-thumbnail.jpg",
+      "./dist/assets/image-product-3-thumbnail.jpg",
+      "./dist/assets/image-product-4-thumbnail.jpg",
+    ],
+  },
+];
+
+function createProductHTML(obj) {
+  return `<div class="product">
+  <div class="carousel" data-count="0">
+    <div class="carousel__slider-btns">
+      <button class="carousel__slider-btn carousel__slider-btns__left">
+        <i class="fa fa-arrow-left"></i>
+      </button>
+      <button class="carousel__slider-btn carousel__slider-btns__right">
+        <i class="fa fa-arrow-right"></i>
+      </button>
+    </div>
+    <div class="carousel__slide">
+            <img src="${obj["images big"][0]}" alt="shoe photo" />
+          </div>
+          <div class="carousel__slide">
+            <img src="${obj["images big"][1]}" alt="shoe photo" />
+          </div>
+          <div class="carousel__slide">
+            <img src="${obj["images big"][2]}" alt="shoe photo" />
+          </div>
+          <div class="carousel__slide">
+            <img src="${obj["images big"][3]}" alt="shoe photo" />
+          </div>
+  </div>
+  <div class="product__pics">
+    <div class="product__pics__big">
+      <img
+        class="product__pics__big__img"
+        src="${obj["images big"][0]}"
+        alt="shoe photo"
+      />
+    </div>
+    <div class="product__pics__small">
+    <div class="product__pics__small__div">
+            <img
+              src="${obj["images small"][0]}"
+              alt="shoe photo"
+              class="product__pics__small__div__img"
+            />
+          </div>
+          <div class="product__pics__small__div">
+            <img
+              src="${obj["images small"][1]}"
+              alt="shoe photo"
+              class="product__pics__small__div__img"
+            />
+          </div>
+          <div class="product__pics__small__div">
+            <img
+              src="${obj["images small"][2]}"
+              alt="shoe photo"
+              class="product__pics__small__div__img"
+            />
+          </div>
+          <div class="product__pics__small__div">
+            <img
+              src="${obj["images small"][3]}"
+              alt="shoe photo"
+              class="product__pics__small__div__img"
+            />
+          </div>
+    </div>
+  </div>
+  <div class="product__info">
+    <h3 class="product__info__company">${obj.company}</h3>
+    <h2 class="product__info__name">${obj.name}</h2>
+    <p class="product__info__desc">
+      ${obj.description}
+    </p>
+    <div class="product__info__price">
+      <div class="product__info__price__after">
+        <p class="product__info__price__after__price">${obj.price}</p>
+        <p class="product__info__price__after__discount">${obj.discount}</p>
+      </div>
+      <div class="product__info__price__before">
+        <p class="product__info__price__before__price">${obj["original price"]}</p>
+      </div>
+    </div>
+    <div class="product__info__form">
+      <div class="product__info__form__counter">
+        <button
+          class="product__info__form__counter__btn product__info__form__counter__btn__minus"
+        >
+          <i class="fa fa-minus" aria-hidden="true"></i>
+        </button>
+        <input
+          type="text"
+          name="quantity"
+          id="quantity"
+          value="0"
+          class="product__info__form__counter__input"
+        />
+        <button
+          class="product__info__form__counter__btn product__info__form__counter__btn__plus"
+        >
+          <i class="fa fa-plus" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+    <div class="product__info__add-to-cart">
+      <button class="product__info__add-to-cart__btn flex">
+        <img src="./dist/assets/icon-cart.svg" alt="cart-icon" />Add to
+        cart
+      </button>
+    </div>
+  </div>
+</div>`;
+}
+
+const products = document.querySelector(".products");
+productsArr.forEach((obj) => {
+  const html = createProductHTML(obj);
+  products.innerHTML += html;
+});
+
+// nav menu button
+const navToggle = document.querySelector(".mobile-nav-toggle");
+const bars = document.querySelectorAll(".bar");
+const nav = document.querySelector(".nav");
+
+navToggle.addEventListener("click", toggleNav);
+
+function toggleNav() {
+  bars.forEach((bar) => {
+    bar.classList.toggle("change");
+  });
+  nav.classList.toggle("change");
+  if (nav.classList.contains("change")) {
+    navToggle.style.position = "fixed";
+  } else {
+    navToggle.style.position = "absolute";
+  }
+}
+
+// product carousels
+let carouselToChange;
+let count;
+let smallImgSrcs = [];
+
+const btnsSliderLeft = document.querySelectorAll(
+  ".carousel__slider-btns__left"
+);
+const btnsSliderRight = document.querySelectorAll(
+  ".carousel__slider-btns__right"
+);
+const carousels = document.querySelectorAll(".carousel");
+
+// position slides in each carousel
+carousels.forEach((car) => {
+  const carouselSlides = car.querySelectorAll(".carousel__slide");
+  carouselSlides.forEach((slide, index) => {
+    slide.style.left = `${index}00%`;
+  });
+});
+
+// slider btns event listeners
+btnsSliderLeft.forEach((btn) => {
+  btn.addEventListener("click", function (e) {
+    carouselToChange = e.currentTarget.closest(".carousel");
+    carouselToChange.dataset.count = Number(carouselToChange.dataset.count) - 1;
+    count = carouselToChange.dataset.count;
+    carousel();
+  });
+});
+btnsSliderRight.forEach((btn) => {
+  btn.addEventListener("click", function (e) {
+    carouselToChange = e.currentTarget.closest(".carousel");
+    carouselToChange.dataset.count = Number(carouselToChange.dataset.count) + 1;
+    count = carouselToChange.dataset.count;
+    carousel();
+  });
+});
+
+// FUNCTIONS
+function carousel() {
+  const slides = carouselToChange.querySelectorAll(".carousel__slide");
+  if (carouselToChange.dataset.count >= slides.length) {
+    carouselToChange.dataset.count = 0;
+    count = carouselToChange.dataset.count;
+  }
+  if (carouselToChange.dataset.count <= -1) {
+    carouselToChange.dataset.count = slides.length - 1;
+    count = carouselToChange.dataset.count;
+  }
+  slides.forEach((slide) => {
+    slide.style.transform = `translateX(-${count}00%)`;
+  });
+}
+
+// cart buttons
+const btnsPlus = document.querySelectorAll(
+  ".product__info__form__counter__btn__plus"
+);
+const btnsMinus = document.querySelectorAll(
+  ".product__info__form__counter__btn__minus"
+);
+btnsPlus.forEach((btn) => {
+  btn.addEventListener("click", function (e) {
+    const input = e.currentTarget.parentElement.querySelector(
+      ".product__info__form__counter__input"
+    );
+    input.value = Number(input.value) + 1;
+  });
+});
+btnsMinus.forEach((btn) => {
+  btn.addEventListener("click", function (e) {
+    const input = e.currentTarget.parentElement.querySelector(
+      ".product__info__form__counter__input"
+    );
+    input.value == 0
+      ? (input.value = 0)
+      : (input.value = Number(input.value) - 1);
+  });
+});
+
+// media query min width 768px
+function myFunction(e) {
+  if (e.matches) {
+    // If media query matches
+    document.querySelectorAll(".product").forEach((div) => {
+      div.classList.add("container");
+    });
+  } else {
+    document.querySelectorAll(".product").forEach((div) => {
+      div.classList.remove("container");
+    });
+  }
+}
+const x = window.matchMedia("(min-width: 768px)");
+myFunction(x); // Call listener function at run time
+x.addEventListener("change", myFunction);
+
+// small pics event listeners
+const smallImgs = document.querySelectorAll(".product__pics__small__div__img");
+smallImgs.forEach((img) => {
+  img.addEventListener("click", function (e) {
+    if (img.closest(".modal")) {
+      smallImgSrcs.forEach((src, i) => {
+        if (e.currentTarget.src == src) {
+          carouselToChange.dataset.count = i;
+          count = carouselToChange.dataset.count;
+          carousel();
+        }
+      });
+    } else {
+      const bigImgSrc = e.currentTarget.src.slice(0, -14);
+      const bigImg = e.currentTarget
+        .closest(".product__pics")
+        .querySelector(".product__pics__big__img");
+      bigImg.src = `${bigImgSrc}.jpg`;
+    }
+  });
+});
+
+// big pics event listeners
+const modal = document.querySelector(".modal");
+const bigImgs = document.querySelectorAll(".product__pics__big__img");
+bigImgs.forEach((img) => {
+  img.addEventListener("click", function (e) {
+    modal.classList.remove("hidden");
+    carouselToChange = modal.querySelector(".carousel");
+    // get big img src
+    const bigImgSrc = e.currentTarget.src.slice(0, -4);
+    // get small imgs src's array
+    const smallImgs = e.currentTarget
+      .closest(".product__pics")
+      .querySelectorAll(".product__pics__small__div__img");
+    smallImgs.forEach((img) => {
+      smallImgSrcs.push(img.src);
+    });
+    // find index of the big picture src in the small img's array
+    let index;
+    smallImgSrcs.forEach((src, i) => {
+      if (src.includes(bigImgSrc)) {
+        index = i;
+      }
+    });
+    // use that index to call carousel function and set the big img
+    carouselToChange.dataset.count = index;
+    count = carouselToChange.dataset.count;
+    carousel();
+    // set small img's for modal
+    modal
+      .querySelectorAll(".product__pics__small__div__img")
+      .forEach((img, index) => {
+        img.src = smallImgSrcs[index];
+      });
+  });
+});
+
+// modal close btn
+const modalClose = document.querySelector(".modal-close");
+modalClose.addEventListener("click", closeModal);
+
+// CART
+const cartDiv = document.querySelector(".cart");
+const cartDivBtn = document.querySelector(".cart-btn-div");
+const addToCartBtns = document.querySelectorAll(
+  ".product__info__add-to-cart__btn"
+);
+
+class CartItem {
+  constructor(name, amount, price, img, total) {
+    this.name = name;
+    this.amount = amount;
+    this.price = price;
+    this.img = img;
+    this.total = total;
+  }
+}
+
+cartDivBtn.addEventListener("click", hideCart);
+
+addToCartBtns.forEach((btn) => {
+  btn.addEventListener("click", function (e) {
+    // create cart item obj
+    const itemObj = createItemObj(e);
+
+    // if 0 is selected alert
+    if (itemObj.amount === 0) {
+      alert("Please specify quantity");
+      return;
+    }
+
+    // push item to cart array or change specific item if already in array
+    pushToCartArr(cartArr, itemObj);
+
+    // produce cart html
+    setCartHTML(cartArr);
+    cartDiv.innerHTML += `<button class="checkout">checkout</button>`;
+
+    // cart delete btns
+    const dltFromCartBtns = document.querySelectorAll(
+      ".cart__product__delete-btn"
+    );
+    dltFromCartBtns.forEach((btn) => {
+      btn.addEventListener("click", deleteFromCart);
+    });
+
+    // set cart amount notification
+    cartAmount();
+  });
+});
+
+function pushToCartArr(arr, obj) {
+  if (arr.every((item) => item.name !== obj.name)) {
+    arr.push(obj);
+  } else {
+    arr.forEach((item) => {
+      if (item.name === obj.name) {
+        item.amount += obj.amount;
+        item.total = item.amount * item.price;
+      }
+    });
+  }
+}
+
+function createItemObj(e) {
+  const name = e.currentTarget
+    .closest(".product__info")
+    .querySelector(".product__info__name").innerHTML;
+  const amount = Number(
+    e.currentTarget.closest(".product__info").querySelector("input").value
+  );
+  const price = Number(
+    e.currentTarget
+      .closest(".product__info")
+      .querySelector(".product__info__price__after__price")
+      .innerHTML.slice(1)
+  );
+  const img = e.currentTarget
+    .closest(".product")
+    .querySelector(".product__pics__small__div__img").src;
+  const total = amount * price;
+
+  return new CartItem(name, amount, price, img, total);
+}
+
+function hideCart(e) {
+  e.preventDefault();
+  cartDiv.classList.toggle("hidden");
+}
+
+function setCartHTML(arr) {
+  cartDiv.innerHTML = `<h3>Cart</h3>
+    <hr />`;
+  arr.forEach((itemObj) => {
+    const HTML = `<div class="cart__product flex">
+      <img
+        src="${itemObj.img}"
+        alt="shoe photo"
+      />
+      <div class="cart__product__details flex">
+        <p class="cart__product__details__name">${itemObj.name}</p>
+        <div class="cart__product__details__price">
+          <p class="cart__product__details__price__price">
+            $${itemObj.price} x ${itemObj.amount} <span>$${itemObj.total}</span>
+          </p>
+        </div>
+      </div>
+      <div class="cart__product__delete-btn">
+        <i class="fas fa-trash"></i>
+      </div>
+    </div>`;
+
+    cartDiv.innerHTML += HTML;
+  });
+}
+
+function deleteFromCart(e) {
+  const name = e.currentTarget
+    .closest(".cart__product")
+    .querySelector(".cart__product__details__name").innerHTML;
+  let index;
+  cartArr.forEach((itemObj, i) => {
+    if (itemObj.name === name) {
+      index = i;
+    }
+  });
+  cartArr.splice(index, 1);
+  const element = e.currentTarget.closest(".cart__product");
+  element.remove();
+
+  if (cartArr.length === 0) {
+    cartDiv.innerHTML = `<h3>Cart</h3>
+    <hr />
+    <div class="cart__empty">
+      <p>Your cart is empty.</p>
+    </div>`;
+  }
+
+  cartAmount();
+}
+
+function cartAmount() {
+  const cartAmount = document.querySelector(".cart-amount");
+  let amount = 0;
+  cartArr.forEach((obj) => {
+    amount += obj.amount;
+  });
+  cartAmount.innerHTML = amount;
+  cartAmount.classList.remove("hidden");
+  if (amount === 0) {
+    cartAmount.classList.add("hidden");
+  }
+}
+
+function closeModal() {
+  modal.classList.add("hidden");
+  smallImgSrcs = [];
+}
