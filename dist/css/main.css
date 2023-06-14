@@ -53,11 +53,62 @@ h1 {
   line-height: 1.2;
 }
 
+:root {
+  --color-primary: rgb(116, 127, 224);
+  --color-secondary: hsl(220, 13%, 13%);
+  --color-tertiary: hsl(219, 9%, 45%);
+  --color-light: hsl(0, 0%, 96%);
+}
+
+:root {
+  --color-primary: rgb(116, 127, 224);
+  --color-secondary: hsl(220, 13%, 13%);
+  --color-tertiary: hsl(219, 9%, 45%);
+  --color-light: hsl(0, 0%, 96%);
+}
+
+body {
+  font-family: "Kumbh Sans", sans-serif;
+}
+
+.product__info__company {
+  font-size: 1.4rem;
+  color: var(--color-primary);
+}
+.product__info__name {
+  font-size: 2.8rem;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--color-secondary);
+}
+@media screen and (max-width: 768px) {
+  .product__info__name {
+    font-size: 2rem;
+  }
+}
+.product__info__desc {
+  color: var(--color-tertiary);
+}
+.product__info__price__after__price {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--color-secondary);
+}
+.product__info__price__after__discount {
+  color: var(--color-tertiary);
+}
+.product__info__price__before {
+  color: var(--color-tertiary);
+}
+.product__info__form {
+  width: 50%;
+}
+
 .header {
-  background-color: rgb(179, 179, 179);
   padding-block: 30px;
   align-items: center;
   position: relative;
+  border-bottom: 1px solid black;
 }
 .header .cart-btn-div {
   margin-left: auto;
@@ -66,6 +117,10 @@ h1 {
   .header .logo {
     margin-left: 3rem;
   }
+}
+.header .logo__text {
+  font-size: 28px;
+  font-weight: 700;
 }
 
 .profile img {
@@ -106,6 +161,7 @@ h1 {
   display: flex;
   justify-content: space-between;
   gap: 1rem;
+  margin-top: 1rem;
 }
 .product__pics__small img {
   max-height: 8rem;
@@ -114,6 +170,52 @@ h1 {
 .product__info {
   width: 100%;
   padding: 1rem;
+}
+.product__info * + * {
+  margin-top: 1rem;
+}
+.product__info__form {
+  width: 100%;
+}
+.product__info__form__counter {
+  width: 100%;
+}
+.product__info__form__counter__input {
+  width: 100%;
+  background-color: var(--color-light);
+  border-radius: 1rem;
+  border: none;
+  padding: 1rem 0;
+  font-size: 1.2rem;
+  outline: none;
+  text-align: center;
+  color: var(--color-primary);
+}
+.product__info__form__counter__btn {
+  background: none;
+  color: var(--color-primary);
+}
+.product__info__add-to-cart {
+  width: 100%;
+}
+.product__info__add-to-cart__btn {
+  width: 100%;
+  justify-content: center;
+  padding: 1rem 0;
+  border-radius: 1rem;
+  background-color: var(--color-primary);
+  color: white;
+}
+.product__info__add-to-cart__btn img {
+  fill: white;
+}
+.product__info__add-item {
+  align-items: center;
+}
+@media screen and (max-width: 480px) {
+  .product__info__add-item {
+    flex-direction: column;
+  }
 }
 
 .flex {
@@ -124,11 +226,17 @@ h1 {
 .container {
   margin-inline: auto;
   max-width: 1280px;
+  padding-inline: 2rem;
 }
 
 .nav {
   z-index: 9998;
   transition: all 0.5s ease-in-out;
+}
+@media screen and (min-width: 768px) {
+  .nav {
+    margin-left: 3rem;
+  }
 }
 .nav-list {
   --gap: 2rem;
@@ -217,6 +325,13 @@ h1 {
   display: flex;
   justify-content: space-between;
 }
+.carousel__slider-btn {
+  background-color: var(--color-light);
+  color: var(--color-secondary);
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: 100%;
+}
 @media screen and (min-width: 768px) {
   .carousel {
     display: none;
@@ -248,8 +363,13 @@ h1 {
   place-items: center;
 }
 .modal-close {
-  font-size: 2rem;
+  font-size: 1rem;
   margin-left: auto;
+  background-color: transparent;
+  color: var(--color-light);
+  height: 3rem;
+  width: 3rem;
+  border-radius: 100%;
 }
 
 .cart {

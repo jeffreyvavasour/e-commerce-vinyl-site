@@ -1,0 +1,8 @@
+@import "../abstract/colors";
+
+:root {
+  --color-primary: #{$primary-color};
+  --color-secondary: #{$secondary-color};
+  --color-tertiary: #{$tertiary-color};
+  --color-light: #{$light-color};
+}

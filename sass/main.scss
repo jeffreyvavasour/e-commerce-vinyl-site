@@ -1,4 +1,7 @@
+@import "abstract/colors";
 @import "base/resets";
+@import "base/root";
+@import "base/typography";
 @import "sections/header";
 @import "sections/product";
 @import "utilities/flex";
@@ -12,7 +15,3 @@
 @import "components/buttons";
 @import "components/cart-amount";
 @import "utilities/hidden";
-
-body {
-  // background-color: blue;
-}

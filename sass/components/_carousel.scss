@@ -28,6 +28,14 @@
     justify-content: space-between;
   }
 
+  &__slider-btn {
+    background-color: var(--color-light);
+    color: var(--color-secondary);
+    height: 2.5rem;
+    width: 2.5rem;
+    border-radius: 100%;
+  }
+
   @include media-min($mq-medium) {
     display: none;
   }

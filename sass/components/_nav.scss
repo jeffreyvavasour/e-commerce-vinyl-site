@@ -3,6 +3,9 @@
 .nav {
   z-index: 9998;
   @include transition-ease;
+  @include media-min($mq-medium) {
+    margin-left: 3rem;
+  }
 
   &-list {
     --gap: 2rem;

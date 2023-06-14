@@ -144,32 +144,34 @@ function createProductHTML(obj) {
         <p class="product__info__price__before__price">${obj["original price"]}</p>
       </div>
     </div>
+    <div class="product__info__add-item flex">
     <div class="product__info__form">
-      <div class="product__info__form__counter">
-        <button
-          class="product__info__form__counter__btn product__info__form__counter__btn__minus"
-        >
-          <i class="fa fa-minus" aria-hidden="true"></i>
-        </button>
-        <input
-          type="text"
-          name="quantity"
-          id="quantity"
-          value="0"
-          class="product__info__form__counter__input"
-        />
-        <button
-          class="product__info__form__counter__btn product__info__form__counter__btn__plus"
-        >
-          <i class="fa fa-plus" aria-hidden="true"></i>
-        </button>
-      </div>
-    </div>
-    <div class="product__info__add-to-cart">
-      <button class="product__info__add-to-cart__btn flex">
-        <img src="./dist/assets/icon-cart.svg" alt="cart-icon" />Add to
-        cart
+    <div class="product__info__form__counter flex">
+      <button
+        class="product__info__form__counter__btn product__info__form__counter__btn__minus"
+      >
+        <i class="fa fa-minus" aria-hidden="true"></i>
       </button>
+      <input
+        type="text"
+        name="quantity"
+        id="quantity"
+        value="0"
+        class="product__info__form__counter__input"
+      />
+      <button
+        class="product__info__form__counter__btn product__info__form__counter__btn__plus"
+      >
+        <i class="fa fa-plus" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+  <div class="product__info__add-to-cart">
+    <button class="product__info__add-to-cart__btn flex">
+      <img src="./dist/assets/icon-cart.svg" alt="cart-icon" />Add to
+      cart
+    </button>
+  </div>
     </div>
   </div>
 </div>`;
@@ -179,6 +181,33 @@ const products = document.querySelector(".products");
 productsArr.forEach((obj) => {
   const html = createProductHTML(obj);
   products.innerHTML += html;
+
+  const btnsSliderLeft = document.querySelectorAll(
+    ".carousel__slider-btns__left"
+  );
+  const btnsSliderRight = document.querySelectorAll(
+    ".carousel__slider-btns__right"
+  );
+
+  // slider btns event listeners
+  btnsSliderLeft.forEach((btn) => {
+    btn.addEventListener("click", function (e) {
+      carouselToChange = e.currentTarget.closest(".carousel");
+      carouselToChange.dataset.count =
+        Number(carouselToChange.dataset.count) - 1;
+      count = carouselToChange.dataset.count;
+      carousel();
+    });
+  });
+  btnsSliderRight.forEach((btn) => {
+    btn.addEventListener("click", function (e) {
+      carouselToChange = e.currentTarget.closest(".carousel");
+      carouselToChange.dataset.count =
+        Number(carouselToChange.dataset.count) + 1;
+      count = carouselToChange.dataset.count;
+      carousel();
+    });
+  });
 });
 
 // nav menu button
@@ -395,12 +424,6 @@ bigImgs.forEach((img) => {
     });
 
     // selectors
-    const btnsSliderLeft = document.querySelectorAll(
-      ".carousel__slider-btns__left"
-    );
-    const btnsSliderRight = document.querySelectorAll(
-      ".carousel__slider-btns__right"
-    );
     const carousels = document.querySelectorAll(".carousel");
 
     // position slides in each carousel
@@ -410,6 +433,13 @@ bigImgs.forEach((img) => {
         slide.style.left = `${index}00%`;
       });
     });
+
+    const btnsSliderLeft = document.querySelectorAll(
+      ".carousel__slider-btns__left"
+    );
+    const btnsSliderRight = document.querySelectorAll(
+      ".carousel__slider-btns__right"
+    );
 
     // slider btns event listeners
     btnsSliderLeft.forEach((btn) => {

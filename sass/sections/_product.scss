@@ -34,6 +34,7 @@
       display: flex;
       justify-content: space-between;
       gap: 1rem;
+      margin-top: 1rem;
 
       & img {
         max-height: 8rem;
@@ -45,5 +46,58 @@
   &__info {
     width: 100%;
     padding: 1rem;
+
+    * + * {
+      margin-top: 1rem;
+    }
+
+    &__form {
+      width: 100%;
+
+      &__counter {
+        width: 100%;
+
+        &__input {
+          width: 100%;
+          background-color: var(--color-light);
+          border-radius: 1rem;
+          border: none;
+          padding: 1rem 0;
+          font-size: 1.2rem;
+          outline: none;
+          text-align: center;
+          color: var(--color-primary);
+        }
+
+        &__btn {
+          background: none;
+          color: var(--color-primary);
+        }
+      }
+    }
+
+    &__add-to-cart {
+      width: 100%;
+      &__btn {
+        width: 100%;
+        justify-content: center;
+        padding: 1rem 0;
+        border-radius: 1rem;
+        background-color: var(--color-primary);
+        color: white;
+
+        img {
+          fill: white;
+        }
+      }
+    }
+
+    &__add-item {
+      align-items: center;
+
+      @include media-max($mq-small) {
+        flex-direction: column;
+      }
+    }
   }
 }
