@@ -478,6 +478,8 @@ const cartDivBtn = document.querySelector(".cart-btn-div");
 const addToCartBtns = document.querySelectorAll(
   ".product__info__add-to-cart__btn"
 );
+const modal = document.querySelector(".modal");
+const bigImgs = document.querySelectorAll(".product__pics__big__img");
 
 // EVENT LISTENERS
 // nav menu button
@@ -535,13 +537,10 @@ addToCartBtns.forEach((btn) => {
     cartAmount();
   });
 });
-
 // big pics event listeners
-const modal = document.querySelector(".modal");
-const bigImgs = document.querySelectorAll(".product__pics__big__img");
 bigImgs.forEach((img) => {
   img.addEventListener("click", function (e) {
-    // insert html based off img clicked
+    // get index of big img clicked
     let ind;
     productsArr.forEach((obj, i) => {
       obj["images big"].forEach((src) => {
@@ -551,15 +550,21 @@ bigImgs.forEach((img) => {
       });
     });
 
+    // insert html based off img clicked
     modal.innerHTML = createModalHTML(ind);
 
-    // small imgs functionality
+    // show modal
+    modal.classList.remove("hidden");
+
+    // small imgs selector
     const smallImgss = document.querySelectorAll(
       ".product__pics__small__div__img"
     );
+    // set big img based off small img clicked
     smallImgss.forEach((img) => {
       img.addEventListener("click", function (e) {
-        console.log(e.currentTarget.src);
+        // if clicked when modal is open
+        // set carousel img to small img clicked
         if (img.closest(".modal")) {
           smallImgSrcs.forEach((src, i) => {
             if (e.currentTarget.src == src) {
@@ -568,6 +573,8 @@ bigImgs.forEach((img) => {
               carousel();
             }
           });
+          // if clicked when no modal is open
+          // set big img to small img clicked
         } else {
           const bigImgSrc = e.currentTarget.src.slice(0, -14);
           const bigImg = e.currentTarget
@@ -578,10 +585,8 @@ bigImgs.forEach((img) => {
       });
     });
 
-    // selectors
+    // position all carousels
     const carousels = document.querySelectorAll(".carousel");
-
-    // position slides in each carousel
     carousels.forEach((car) => {
       const carouselSlides = car.querySelectorAll(".carousel__slide");
       carouselSlides.forEach((slide, index) => {
@@ -589,13 +594,13 @@ bigImgs.forEach((img) => {
       });
     });
 
+    // slider btns selectors
     const btnsSliderLeft = document.querySelectorAll(
       ".carousel__slider-btns__left"
     );
     const btnsSliderRight = document.querySelectorAll(
       ".carousel__slider-btns__right"
     );
-
     // slider btns event listeners
     btnsSliderLeft.forEach((btn) => {
       btn.addEventListener("click", function (e) {
@@ -620,7 +625,6 @@ bigImgs.forEach((img) => {
     const modalClose = document.querySelector(".modal-close");
     modalClose.addEventListener("click", closeModal);
 
-    modal.classList.remove("hidden");
     carouselToChange = modal.querySelector(".carousel");
     // get big img src
     const bigImgSrc = e.currentTarget.src.slice(0, -4);
